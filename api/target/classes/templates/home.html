@@ -1,0 +1,87 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>MongoDB/Spring Boot tutorial from tests4geeks.com</title>
+		<style>
+			table, th, td {
+			   border: 1px solid black;
+			   border-spacing: 0px;
+			}
+			th, td {
+				padding: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<table>
+			<thead>
+				<tr>
+					<th>vin</th>
+					<th>latitude</th>
+					<th>longitude</th>
+					<th>timestamp</th>
+					<th>fuelVolume</th>
+					<th>speed</th>
+					<th>engineHp</th>
+					<th>checkEngineLightOn</th>
+					<th>engineCoolantLow</th>
+					<th>cruiseControlOn</th>
+					<th>engineRpm</th>
+
+
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="car : ${carList}">
+					<td th:text="${car.vin}"></td>
+					<td th:text="${car.latitude}"></td>
+					<td th:text="${car.longitude}"></td>
+					<td th:text="${car.timestamp}"></td>
+					<td th:text="${car.fuelVolume}"></td>
+					<td th:text="${car.speed}"></td>
+					<td th:text="${car.engineHp}"></td>
+					<td th:text="${car.checkEngineLightOn}"></td>
+					<td th:text="${car.engineCoolantLow}"></td>
+					<td th:text="${car.cruiseControlOn}"></td>
+					<td th:text="${car.engineRpm}"></td>
+				<!--	<td th:text="${car.tires.frontLeft}"></td>
+					<td th:text="${car.tires.frontRight}"></td>
+					<td th:text="${car.tires.rearLeft}"></td>
+					<td th:text="${car.tires.frontRight}"></td>
+				-->
+
+
+
+
+
+				</tr>
+			</tbody>
+		</table>
+		<br />
+		<h2>Add Car</h2>
+		<form action="/addCar" method="POST">
+			Make <input type="text" id="vin" name="vin" /><br />
+			Model <input type="text" id="latitude" name="latitude" /><br />
+			Year <input type="text" id="longitude" name="longitude" /><br />
+			Make <input type="text" id="timestamp" name="timestamp" /><br />
+			fuelVolume <input type="text" id="fuelVolume" name="fuelVolume" /><br />
+			speed <input type="text" id="speed" name="speed" /><br />
+			engineHp <input type="text" id="engineHp" name="engineHp" /><br />
+			checkEngineLightOn <input type="text" id="checkEngineLightOn" name="checkEngineLightOn" /><br />
+			cruiseControlOn <input type="text" id="cruiseControlOn" name="cruiseControlOn" /><br />
+			engineCoolantLow<input type="text" id="engineCoolantLow" name="engineCoolantLow"/><br/>
+			engineRpm <input type="text" id="engineRpm" name="engineRpm" /><br />
+			Front Left <input type="text" id="tires.frontLeft" name="tires.frontLeft" /><br />
+			Front Right <input type="text" id="tires.frontRight" name="tires.frontRight" /><br />
+			Rear Left <input type="text" id="tires.rearLeft" name="tires.rearLeft" /><br />
+				Rear Right  <input type="text" id="tires.rearRight" name="tires.rearRight" /><br />
+
+			<input type="submit" />
+		</form>
+		<h2>Search for cars</h2>
+		<form action="/search" method="POST">
+			<input type="text" name="search" id="search" th:value="${search}" />
+			<input type="submit" value="Search" />
+		</form>
+	</body>
+</html>
