@@ -1,0 +1,35 @@
+<agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+  <agm-marker *ngFor="let m of markers"
+
+    [latitude]="m.latitude"
+    [longitude]="m.longitude"
+   ></agm-marker>
+</agm-map>
+<hr>
+<hr>
+<div class="container">
+  <div class="row">
+     <div class="table-responsive" style="margin-top: 30px;">
+    <table class="table bordered highlight"
+           [mfData]='data' #mf="mfDataTable">
+
+      <thead>
+      <tr>
+        <th>Vin</th>
+        <th>
+          Historical Alert Count
+        </th>
+        </tr>
+      </thead>
+
+      <tbody>
+      <tr *ngFor = "let alert of mf.data">
+        <td>{{alert.vin}}</td>
+        <td>{{alert.numberOfTimes}}</td>
+
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
